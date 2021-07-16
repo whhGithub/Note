@@ -9,7 +9,7 @@
             >   
              <template #item="{index,element}">
                  <n-card closable = "true" @close="onDelete(index)" hoverable = "true">
-                 <div style="font-size:32px">{{element.title}}</div>
+                 <div style="font-size:23px">{{element.title}}</div>
                  <n-button @click="Update(index)">编辑</n-button>
                 </n-card>
             </template>

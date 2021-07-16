@@ -11,6 +11,9 @@ const store = Vuex.createStore({
         addContent(state, task) {
             state.contentList.unshift(task)
         },
+        updateContents(state, tasks) {
+            state.contentList = tasks
+        },
         updateContent(state, task) {
             state.contentList[state.editListNumber] = task
         },

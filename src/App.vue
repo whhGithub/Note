@@ -17,6 +17,7 @@
 
 <script setup>
 import { computed, onMounted, ref } from "vue";
+import { useStore } from "vuex";
 import {
     NLayout,
     NLayoutHeader,
@@ -29,6 +30,7 @@ import {
 } from "naive-ui";
 import router from "./router/index.js"
 import { useRoute } from "vue-router";
+const store = useStore();
 const route = useRoute()
 const routeName = computed(() => {
     if(route.name === "main") return "预览页"
@@ -41,6 +43,21 @@ const switchTitle = () => {
     if(route.name === "preview"){
         router.push("main");
     } 
+}
+onMounted(()=>{
+    let myData= localStorage.getItem("myData");
+    if(myData){
+        myData = JSON.parse(myData)
+        store.commit("updateContents",myData[0])
+    }
+})
+
+window.onbeforeunload = (event) =>{
+    let contentList = store.state.contentList;
+    let MdeList = store.state.MdeList;
+    let editListNumber = store.state.editListNumber;
+    let myData = [contentList,MdeList,editListNumber];
+    localStorage.setItem("myData",JSON.stringify(myData));
 }
 </script>
 <style lang="postcss" scoped>
