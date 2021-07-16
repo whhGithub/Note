@@ -1,0 +1,32 @@
+{
+    "version": "0.0.0",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "serve": "vite preview"
+    },
+    "dependencies": {
+        "@vicons/material": "^0.10.0",
+        "easymde": "^2.15.0",
+        "element-plus": "^1.0.2-beta.55",
+        "lodash": "^4.17.21",
+        "naive-ui": "^2.12.0",
+        "pwa-asset-generator": "^4.0.2",
+        "swiper": "^6.7.0",
+        "uuid": "^8.3.2",
+        "vfonts": "^0.1.0",
+        "vite-plugin-pwa": "^0.8.1",
+        "vue": "^3.0.5",
+        "vue-router": "^4.0.9",
+        "vue-simplemde": "^2.0.0",
+        "vuedraggable": "^4.0.3",
+        "vuex": "^4.0.2"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "^1.2.4",
+        "@vue/compiler-sfc": "^3.0.5",
+        "autoprefixer": "^10.2.6",
+        "postcss-nesting": "^8.0.1",
+        "vite": "^2.3.7"
+    }
+}
