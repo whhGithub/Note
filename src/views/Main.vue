@@ -41,9 +41,8 @@ import {
     NGradientText,
     NTooltip
 } from "naive-ui";
-import draggable from "vuedraggable";
 import EasyMDE from "easymde";
-import router from "../router"
+import router from "../router";
 import { v4 as uuidv4 } from 'uuid';
 const store = useStore();
 let easyMDE;

@@ -6,14 +6,13 @@
                 @start="drag = true"
                 @end="drag = false"
                 item-key="id"
-            >   
+            >
              <template #item="{index,element}">
                  <n-card closable = "true" @close="onDelete(index)" hoverable = "true">
                  <div style="font-size:23px">{{element.title}}</div>
                  <n-button @click="Update(index)">编辑</n-button>
                 </n-card>
             </template>
-               
           </draggable>
             <br>
             <n-button @click="add">添加</n-button>
@@ -37,7 +36,6 @@ import {
     NGradientText
 } from "naive-ui";
 import draggable from "vuedraggable";
-import TaskItem from "../components/TaskItem.vue";
 import router from "../router"
 import EasyMDE from "easymde";
 const add = () =>{
