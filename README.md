@@ -1,2 +1,3 @@
-# Note
+# vite-note-app
 vue Note 
+
