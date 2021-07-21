@@ -1,46 +1,35 @@
-let CACHE_NAME = 'Note'
-let urlsToCache = [
-    '/favicon.ico',
-    '/assets/index.d15889db.js',
-    '/assets/index.d54a1910.css',
-    '/icons/manifest-icon-192.png',
-    '/manifest.webmanifest',
-    '/registerSW.js',
-    '/assets/vendor.1fa15d5f.js'
-]
-self.addEventListener('install', (event) => {
-    event.waitUntil(
-        caches.open(CACHE_NAME)
-        .then(cache => cache.addAll(urlsToCache))
-    )
-})
-
-self.addEventListener('fetch', function(event) {
-    event.respondWith(
-        caches.match(event.request)
-        .then(function(response) {
-            // Cache hit - return response
-            if (response) {
-                return response;
-            }
-            return fetch(event.request);
-        })
-    );
-});
-
-self.addEventListener('activate', function(event) {
-
-    var cacheAllowlist = ['Note'];
-
-    event.waitUntil(
-        caches.keys().then(function(cacheNames) {
-            return Promise.all(
-                cacheNames.map(function(cacheName) {
-                    if (cacheAllowlist.indexOf(cacheName) === -1) {
-                        return caches.delete(cacheName);
-                    }
-                })
-            );
-        })
-    );
-});
+if (!self.define) {
+    const e = e => {
+            "require" !== e && (e += ".js");
+            let s = Promise.resolve();
+            return r[e] || (s = new Promise((async s => {
+                if ("document" in self) {
+                    const r = document.createElement("script");
+                    r.src = e, document.head.appendChild(r), r.onload = s
+                } else importScripts(e), s()
+            }))), s.then((() => { if (!r[e]) throw new Error(`Module ${e} didn’t register its module`); return r[e] }))
+        },
+        s = (s, r) => { Promise.all(s.map(e)).then((e => r(1 === e.length ? e[0] : e))) },
+        r = { require: Promise.resolve(s) };
+    self.define = (s, i, t) => {
+        r[s] || (r[s] = Promise.resolve().then((() => {
+            let r = {};
+            const n = { uri: location.origin + s.slice(1) };
+            return Promise.all(i.map((s => {
+                switch (s) {
+                    case "exports":
+                        return r;
+                    case "module":
+                        return n;
+                    default:
+                        return e(s)
+                }
+            }))).then((e => { const s = t(...e); return r.default || (r.default = s), r }))
+        })))
+    }
+}
+define("./sw.js", ["./workbox-ac8ffed3"], (function(e) {
+    "use strict";
+    self.addEventListener("message", (e => { e.data && "SKIP_WAITING" === e.data.type && self.skipWaiting() })), e.precacheAndRoute([{ url: "assets/index.7e6f9788.css", revision: "532457071f8414330355262c007dff11" }, { url: "assets/index.e698e79b.js", revision: "f8a4241a39e01dd5960ebdd10698a558" }, { url: "assets/vendor.c9e47028.js", revision: "367b726867267c003be5a58041e82850" }, { url: "index.html", revision: "d2eeb0cd9020d61edb4a41d724ae4171" }, { url: "manifest.webmanifest", revision: "1536dcb534b29169b7dba957cae7a896" }], {}), e.cleanupOutdatedCaches(), e.registerRoute(new e.NavigationRoute(e.createHandlerBoundToURL("index.html")))
+}));
+//# sourceMappingURL=sw.js.map
