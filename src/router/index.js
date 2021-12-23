@@ -3,6 +3,8 @@ import Main from "../views/Main.vue";
 import Preview from "../views/Preview.vue";
 export default VueRouter.createRouter({
     history: VueRouter.createWebHashHistory(),
+    mode: "history",
+    base: "/note/",
     routes: [{
             path: "/main",
             name: "main",

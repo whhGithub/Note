@@ -6,6 +6,17 @@ import postcssNesting from 'postcss-nesting';
 import { VitePWA } from "vite-plugin-pwa";
 // https://vitejs.dev/config/
 export default defineConfig({
+    base: "/note",
+    build: {
+        // 在 outDir 中生成 manifest.json
+        manifest: true,
+        rollupOptions: {
+            // 覆盖默认的 .html 入口
+            input: 'index.html'
+        },
+        outDir: 'note',
+        assetsPublicPath: './',
+    },
     plugins: [
         vue(),
         VitePWA({
@@ -34,7 +45,7 @@ export default defineConfig({
             workbox: {
                 // workbox options for generateSW
             },
-        })
+        }),
     ],
     //样式表插件
     css: {
@@ -44,5 +55,7 @@ export default defineConfig({
                 postcssNesting
             ]
         }
-    }
+    },
+
+
 })
