@@ -1,5 +1,6 @@
 {
     "version": "0.0.0",
+    "homepage": "https://wu-honghao.github.io/vite-note-app",
     "scripts": {
         "dev": "vite",
         "build": "vite build",
